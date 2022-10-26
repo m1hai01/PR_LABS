@@ -3,7 +3,7 @@
 
 namespace Dining_Hall.Services
 {
-    public class DiningHall : IHall
+    public class DiningHall : IHall,ISemaphore
     {
         static int waiter_id = 1;
         static int order_id = 1;
@@ -13,7 +13,9 @@ namespace Dining_Hall.Services
         private Random rnd;
         private HttpClient httpClient;
         private readonly ILogger<DiningHall> _logger;
-        
+        private List<Thread> threads = new List<Thread>();
+        private SemaphoreSlim semaphore = new SemaphoreSlim(2);
+
 
         public DiningHall(ILogger<DiningHall> logger)
         {
@@ -29,10 +31,30 @@ namespace Dining_Hall.Services
                 // _logger.LogInformation($"Enter for loop for constructor ");
 
                 // turn on threads that generate orders
-                Task.Run(() => GenerateOrder());
+                //Task.Run(() => GenerateOrder());
+                //threads.Add(new Thread(() => { }));
+                threads.Add(new Thread(GenerateOrder));
+                //threads[i] = new Thread(() => GenerateOrder());
+                threads[i].Start();
             }
 
             
+        }
+
+        public void Stop()
+        {
+            for (int i = 0; i < threads.Count; i++)
+            {
+                threads[i].ThreadState.
+            }
+        }
+
+        public void Start()
+        {
+            for (int i = 0; i < threads.Count; i++)
+            {
+                threads[i].Start();
+            }
         }
         public void GenerateOrder()
         {
@@ -52,7 +74,7 @@ namespace Dining_Hall.Services
             while (true)
             {
                 //use while for permanently sending orders(for program doesn't stop)
-                Thread.Sleep(5000);// ca sa sbiveasca abaroatele
+                
                 //_logger.LogInformation($"While in generate order ");
                 var order = new Order
                 {
@@ -64,9 +86,14 @@ namespace Dining_Hall.Services
                     max_wait = rnd.Next(1, 50)
 
                 };
-                
+
+                semaphore.Wait();
+               
                 Task.Run(() => SendOrder(order));
                 Thread.Sleep(2000);
+
+                semaphore.Release();
+                
             }
         }
 

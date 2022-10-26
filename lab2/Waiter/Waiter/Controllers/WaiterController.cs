@@ -28,13 +28,12 @@ namespace Waiter.Controllers
             }
 
             [HttpPost("Order")]
+            // receive incoming order from dinning hall
             public void Order([FromBody] Order order)
             {
-                //_logger.LogWarning("warning");
+                _logger.LogInformation($"Server received order {order.order_id} form dining hall.");
                 Task.Run(() => iWaiter.ReceiveOrder(order));
-
             }
-
         }
     }
 }

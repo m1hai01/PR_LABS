@@ -3,7 +3,7 @@ using Dining_Hall.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.Services.AddSingleton<IHall,DiningHall>();
+builder.Services.AddSingleton<ISemaphore,DiningHall>();
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -28,7 +28,7 @@ Task.Run(() =>
 {
     using var serviceScope = app.Services.CreateScope();
     var services = serviceScope.ServiceProvider;
-    var _ = services.GetRequiredService<IHall>();
+    var _ = services.GetRequiredService<ISemaphore>();
 });
 
 app.Run();
