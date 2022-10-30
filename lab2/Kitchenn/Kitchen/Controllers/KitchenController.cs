@@ -20,10 +20,10 @@ namespace Kitchen.Controllers
         }
         
         [HttpPost("Order")]
-        public void Order([FromBody] Order order)
+        public async Task Order([FromBody] Order order)
         {
-            _logger.LogWarning("warning");
-            Task.Run(() => iKitchen.ReceiveOrder(order));
+            _logger.LogInformation($"Kitchen controller Receive order");
+            await iKitchen.ReceiveOrder(order);
 
         }
         

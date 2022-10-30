@@ -22,17 +22,19 @@ namespace Waiter.Controllers
 
             //freastra la care putem sa ne adresam
             [HttpPost("Distribution")]
-            public void Distribution([FromBody] ReturnOrder order)
+            public async Task Distribution([FromBody] ReturnOrder order)
             {
-                Task.Run(() => iWaiter.ReceiveReturnOrder(order));
+                _logger.LogInformation($"Receive return order {order.order_id} from Kitchen ");
+                
+                await iWaiter.ReceiveReturnOrder(order);
             }
 
             [HttpPost("Order")]
             // receive incoming order from dinning hall
-            public void Order([FromBody] Order order)
+            public async Task Order([FromBody] Order order)
             {
                 _logger.LogInformation($"Server received order {order.order_id} form dining hall.");
-                Task.Run(() => iWaiter.ReceiveOrder(order));
+                await iWaiter.ReceiveOrder(order);
             }
         }
     }

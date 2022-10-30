@@ -4,7 +4,7 @@ namespace Waiter
 {
     public interface IWaiter
     {
-        void ReceiveOrder(Order order);
-        void ReceiveReturnOrder(ReturnOrder order);
+        Task ReceiveOrder(Order order);
+        Task ReceiveReturnOrder(ReturnOrder order);
     }
 }

@@ -4,6 +4,6 @@ namespace Kitchen.Interfaces
 {
     public interface IKitchen
     {
-        void ReceiveOrder(Order order);
+        Task ReceiveOrder(Order order);
     }
 }

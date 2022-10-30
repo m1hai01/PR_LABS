@@ -3,7 +3,7 @@
 
 namespace Dining_Hall.Services
 {
-    public class DiningHall : IHall,ISemaphore
+    public class DiningHall : IHall  
     {
         static int waiter_id = 1;
         static int order_id = 1;
@@ -13,8 +13,7 @@ namespace Dining_Hall.Services
         private Random rnd;
         private HttpClient httpClient;
         private readonly ILogger<DiningHall> _logger;
-        private List<Thread> threads = new List<Thread>();
-        private SemaphoreSlim semaphore = new SemaphoreSlim(2);
+       
 
 
         public DiningHall(ILogger<DiningHall> logger)
@@ -25,38 +24,20 @@ namespace Dining_Hall.Services
             httpClient.BaseAddress = new Uri("http://localhost:5166");
             //_logger.LogInformation($"Constructor start ");
 
-            for (int i = 0; i < 5; i++)
+            for (int i = 0; i < 10; i++)
             {
-                Thread.Sleep(500);
+                Thread.Sleep(1500);
                 // _logger.LogInformation($"Enter for loop for constructor ");
 
                 // turn on threads that generate orders
-                //Task.Run(() => GenerateOrder());
-                //threads.Add(new Thread(() => { }));
-                threads.Add(new Thread(GenerateOrder));
-                //threads[i] = new Thread(() => GenerateOrder());
-                threads[i].Start();
+                Task.Run(GenerateOrder);
             }
 
             
         }
 
-        public void Stop()
-        {
-            for (int i = 0; i < threads.Count; i++)
-            {
-                threads[i].ThreadState.
-            }
-        }
-
-        public void Start()
-        {
-            for (int i = 0; i < threads.Count; i++)
-            {
-                threads[i].Start();
-            }
-        }
-        public void GenerateOrder()
+       
+        public async Task GenerateOrder()
         {
             //in body of request we generate order and it contain:
             rnd = new Random();
@@ -87,20 +68,17 @@ namespace Dining_Hall.Services
 
                 };
 
-                semaphore.Wait();
-               
-                Task.Run(() => SendOrder(order));
+
+                await SendOrder(order);
                 Thread.Sleep(2000);
 
-                semaphore.Release();
-                
             }
         }
 
-        public void SendOrder(Order order)
+        public async Task SendOrder(Order order)
         {
             _logger.LogInformation($"SendOrder{order.order_id} ");
-            httpClient.PostAsJsonAsync("Waiter/Order", order);//in body of request add order as json 
+            await httpClient.PostAsJsonAsync("Waiter/Order", order);//in body of request add order as json 
 
         }
 

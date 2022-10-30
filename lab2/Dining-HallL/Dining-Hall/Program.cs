@@ -28,7 +28,7 @@ Task.Run(() =>
 {
     using var serviceScope = app.Services.CreateScope();
     var services = serviceScope.ServiceProvider;
-    var _ = services.GetRequiredService<ISemaphore>();
+    var _ = services.GetRequiredService<IHall>();
 });
 
 app.Run();

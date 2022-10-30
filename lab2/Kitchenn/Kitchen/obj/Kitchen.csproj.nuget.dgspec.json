@@ -1,24 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\UTM\\Anul3\\PR\\lab2\\Kitchenn\\Kitchen\\Kitchen.csproj": {}
+    "D:\\FAF\\Anul3\\PR_LABS\\PR_LABS\\lab2\\Kitchenn\\Kitchen\\Kitchen.csproj": {}
   },
   "projects": {
-    "D:\\UTM\\Anul3\\PR\\lab2\\Kitchenn\\Kitchen\\Kitchen.csproj": {
+    "D:\\FAF\\Anul3\\PR_LABS\\PR_LABS\\lab2\\Kitchenn\\Kitchen\\Kitchen.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\UTM\\Anul3\\PR\\lab2\\Kitchenn\\Kitchen\\Kitchen.csproj",
+        "projectUniqueName": "D:\\FAF\\Anul3\\PR_LABS\\PR_LABS\\lab2\\Kitchenn\\Kitchen\\Kitchen.csproj",
         "projectName": "Kitchen",
-        "projectPath": "D:\\UTM\\Anul3\\PR\\lab2\\Kitchenn\\Kitchen\\Kitchen.csproj",
+        "projectPath": "D:\\FAF\\Anul3\\PR_LABS\\PR_LABS\\lab2\\Kitchenn\\Kitchen\\Kitchen.csproj",
         "packagesPath": "C:\\Users\\mustu\\.nuget\\packages\\",
-        "outputPath": "D:\\UTM\\Anul3\\PR\\lab2\\Kitchenn\\Kitchen\\obj\\",
+        "outputPath": "D:\\FAF\\Anul3\\PR_LABS\\PR_LABS\\lab2\\Kitchenn\\Kitchen\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "D:\\Software\\VS Tools\\NuGetPackages"
-        ],
         "configFilePaths": [
           "C:\\Users\\mustu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -61,7 +57,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

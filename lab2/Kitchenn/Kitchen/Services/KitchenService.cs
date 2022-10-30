@@ -10,6 +10,7 @@ namespace Kitchen.Services
         Random rnd = new Random();
         private HttpClient httpClient;
         private readonly ILogger<KitchenService> _logger;
+        private SemaphoreSlim _semaphoreKitchen = new SemaphoreSlim(5, 5);
         public KitchenService(ILogger<KitchenService> logger)
         {
             _logger = logger;
@@ -19,24 +20,27 @@ namespace Kitchen.Services
             for (int i = 0; i < 5; i++)
             {
                 //_logger.LogInformation($"Constructor-for  ");
-                Task.Run(() => PrepareOrder());
+                Task.Run(PrepareOrder);
             }
         
         }
 
-        public void ReceiveOrder(Order order)
+        public async Task ReceiveOrder(Order order)
         {
+            await _semaphoreKitchen.WaitAsync();
             mutex.WaitOne();
             _logger.LogInformation($"Receive Order{order.order_id} ");
             queue.Enqueue(order);
             mutex.ReleaseMutex();
+            _semaphoreKitchen.Release();
         }
 
-        public void PrepareOrder()
+        public async Task PrepareOrder()
         {
             //_logger.LogInformation($"PrepareOrder ");
             while (true)
             {
+                await _semaphoreKitchen.WaitAsync();
                // _logger.LogInformation($"Prepare order while ");
                 mutex.WaitOne();//lock the logic bellow for other threads enter 
                 if (queue.Count != 0)
@@ -59,9 +63,10 @@ namespace Kitchen.Services
                         max_wait = order.max_wait,
                         cooking_time = cookingtime,
                     };
-                    Task.Run(() => SendReturnOrder(returnOrder));
+                    SendReturnOrder(returnOrder);
                 }
                 mutex.ReleaseMutex();//allow to other threads to enter in logic above 
+                _semaphoreKitchen.Release();
             }
         }
 

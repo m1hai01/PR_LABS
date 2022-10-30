@@ -8,24 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\mustu\\.nuget\\packages\\": {},
-    "D:\\Software\\VS Tools\\NuGetPackages": {}
+    "C:\\Users\\mustu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\UTM\\Anul3\\PR\\lab2\\Waiter\\Waiter\\Waiter.csproj",
+      "projectUniqueName": "D:\\FAF\\Anul3\\PR_LABS\\PR_LABS\\lab2\\Waiter\\Waiter\\Waiter.csproj",
       "projectName": "Waiter",
-      "projectPath": "D:\\UTM\\Anul3\\PR\\lab2\\Waiter\\Waiter\\Waiter.csproj",
+      "projectPath": "D:\\FAF\\Anul3\\PR_LABS\\PR_LABS\\lab2\\Waiter\\Waiter\\Waiter.csproj",
       "packagesPath": "C:\\Users\\mustu\\.nuget\\packages\\",
-      "outputPath": "D:\\UTM\\Anul3\\PR\\lab2\\Waiter\\Waiter\\obj\\",
+      "outputPath": "D:\\FAF\\Anul3\\PR_LABS\\PR_LABS\\lab2\\Waiter\\Waiter\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "D:\\Software\\VS Tools\\NuGetPackages"
-      ],
       "configFilePaths": [
         "C:\\Users\\mustu\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -68,7 +63,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

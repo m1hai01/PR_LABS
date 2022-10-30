@@ -2,6 +2,6 @@
 {
     public interface IHall
     {
-        void GenerateOrder();
+        Task GenerateOrder();
     }
 }
