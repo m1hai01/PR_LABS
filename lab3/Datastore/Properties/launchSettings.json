@@ -1,4 +1,4 @@
-﻿{
+{
   "$schema": "https://json.schemastore.org/launchsettings.json",
   "iisSettings": {
     "windowsAuthentication": false,
@@ -11,16 +11,19 @@
   "profiles": {
     "Datastore": {
       "commandName": "Project",
-      "dotnetRunMessages": true,
+      "workingDirectory": "D:\\FAF\\Anul3\\PR_LABS\\PR_LABS\\lab3\\Datastore",
       "launchBrowser": true,
       "launchUrl": "swagger",
-      "applicationUrl": "https://localhost:7293;http://localhost:5293",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+      },
+      "sqlDebugging": true,
+      "applicationUrl": "https://localhost:7293;http://localhost:5293",
+      "dotnetRunMessages": true
     },
     "IIS Express": {
       "commandName": "IISExpress",
+      "workingDirectory": "D:\\FAF\\Anul3\\PR_LABS\\PR_LABS\\lab3\\Datastore",
       "launchBrowser": true,
       "launchUrl": "swagger",
       "environmentVariables": {
